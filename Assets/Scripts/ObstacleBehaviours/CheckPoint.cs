@@ -16,11 +16,12 @@ public class CheckPoint : MonoBehaviour
             if (col.gameObject.tag == "Player") {
             
 			Debug.Log("Player entered the trigger collider!");
-            OnTriggerEvent?.Invoke();
-
-			//On immobilise le joueur pendant 0.5 s
+            //On immobilise le joueur pendant 0.5 s
 			PlayerManager.SetFreeze(0.5f);
             StopTrigger = true;
+            OnTriggerEvent?.Invoke();
+
+			
         }
     }
         }
