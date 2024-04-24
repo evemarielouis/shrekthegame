@@ -36,7 +36,9 @@ public class PlayerManager : MonoBehaviour
 	
 	//Variables attributs  du joueur.
 	
-	private int nbDeath = 0; //Enregistre le nombre de morts.
+
+
+	private int nbLives = 3;
 	private float timerGame = 0;
 	private bool endTimer = false;
 	
@@ -52,18 +54,20 @@ public class PlayerManager : MonoBehaviour
 	}
 	/* [ADDED] */
 	
-	//Ajoute 1 au compteur de morts
-	public void AddDeath(){
-		nbDeath++;
-		if(hud != null){ //On édite le HUD
-			hud.updateDeathText(nbDeath);
-		}
-		audioManager.PlaySFX(audioManager.damageSFX); //Joue le bruitage de dégâts
+	//Enlève 1 au compteur de vies
+	public void RemoveLive()
+    {
+        nbLives--; // Décrémentez le nombre de vies du joueur
+        if (hud != null)
+        {
+            hud.updatelivesText(nbLives); // Mettez à jour l'affichage des vies dans le HUD
+        }
+        audioManager.PlaySFX(audioManager.damageSFX); //Joue le bruitage de dégâts
 	}
 
 	//On récupère le nombre de morts
-	public int GetNbDeath(){
-		return nbDeath;
+	public int GetNbLives(){
+		return nbLives;
 	}
 	
 	//On récupère le nombre de morts
@@ -87,7 +91,11 @@ public class PlayerManager : MonoBehaviour
 	[SerializeField] private float _moveSpeed = 5f; //On définit ici la vitesse du character. Vous pouvez la modifier. 5f = le nombre 5 en float (décimal).
 	[SerializeField] private Rigidbody2D _rb; //On place ici le rigidbody du character
 	private Vector2 _movement;
-	
+	private Animator animator;
+
+	void Start(){
+		animator = GetComponent<Animator>(); //On charge l'animator de l'objet dans notre script
+	}
 
     // Fonction qui se lance à chaque frame.
     void Update() {
@@ -98,6 +106,14 @@ public class PlayerManager : MonoBehaviour
 		//On récupère si les touches de directions horizontales et verticales sont pressées, cela donne un nombre entre 0 (pas pressé) et 1 (pressé).
         _movement.x = Input.GetAxisRaw("Horizontal");
 		_movement.y = Input.GetAxisRaw("Vertical");
+
+		if(_movement != Vector2.zero){ //Si le joueur bouge, on partage les variables à l'animator pour qu'il bouge le sprite en conséquence
+			animator.SetFloat("moveX", _movement.x);
+			animator.SetFloat("moveY", _movement.y);
+			animator.SetBool("moving", true);
+		} else {
+			animator.SetBool("moving", false);
+		}
 
 		//Si la valeur récupérée est supérieure à 0, ça veut dire que la touche est pressée.
 		bool isMovingHorizontal = Mathf.Abs(_movement.x) > 0;
