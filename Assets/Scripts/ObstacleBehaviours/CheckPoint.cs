@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-
     public delegate void TriggerEventHandler();
     public static event TriggerEventHandler OnTriggerEvent;
     private bool StopTrigger = false;
@@ -14,14 +13,11 @@ public class CheckPoint : MonoBehaviour
         
         if (!StopTrigger){
             if (col.gameObject.tag == "Player") {
-            
 			Debug.Log("Player entered the trigger collider!");
             //On immobilise le joueur pendant 0.5 s
 			PlayerManager.SetFreeze(0.5f);
             StopTrigger = true;
             OnTriggerEvent?.Invoke();
-
-			
         }
     }
         }

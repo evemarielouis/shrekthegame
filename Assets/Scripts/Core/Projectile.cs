@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-      void OnCollisionEnter2D(Collision2D collision)
+    void Start(){
+
+	}
+      void OnCollisionEnter2D(Collision2D col)
     {
         // Check if the projectile collides with a GameObject tagged as "Wall"
-        if (collision.gameObject.CompareTag("Wall"))
+        if (col.gameObject.tag == "Donkey")
         {
-            // Destroy the projectile GameObject upon collision with the wall
-            Destroy(gameObject);
-        } else if (collision.gameObject.CompareTag("Player")){
-            // do something to kill dragon
-        }
+            Debug.Log("oh my god they're KISSING");
+           // ANIMATION QUAND DRAGON EST MORT ICI NATHAN ICI 
+           
+        } 
 
 
     }

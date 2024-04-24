@@ -31,7 +31,6 @@ public class VerticalMove : MonoBehaviour
 
 	void FixedUpdate()
 	{
-
 		if (!triggerActivated)
 		{
 			if (delay > 0)
