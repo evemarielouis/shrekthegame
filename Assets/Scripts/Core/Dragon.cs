@@ -7,7 +7,7 @@ public class Dragon : MonoBehaviour
    [SerializeField] private Transform fireSpawnPoint;
    [SerializeField] private GameObject firePrefab;
    [SerializeField] private float fireSpeed = 10f;
-   [SerializeField] private float spawnDelay = 2.0f;
+   [SerializeField] private float spawnDelay = 3.0f;
 
   void FixedUpdate() {
 
@@ -17,7 +17,7 @@ public class Dragon : MonoBehaviour
     // Check if the spawn delay has reached zero
     if (spawnDelay <= 0) {
         // Reset the spawn delay timer
-        spawnDelay = 2.0f; // Reset to the initial delay value
+        spawnDelay = 1.0f; // Reset to the initial delay value
 
         // Debugging: Print position and rotation of fireSpawnPoint
         Debug.Log("Fire Spawn Point Position: " + fireSpawnPoint.position);
