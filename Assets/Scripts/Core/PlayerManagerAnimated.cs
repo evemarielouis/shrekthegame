@@ -36,25 +36,22 @@ public class PlayerManagerAnimated : MonoBehaviour
 	
 	//Variables attributs  du joueur.
 	
-	private int nbLives = 3;
+	private int nbDeath = 0; //Enregistre le nombre de morts.
 	private float timerGame = 0;
 	private bool endTimer = false;
 	
-	
-	//Enlève 1 au compteur de vies
-	public void RemoveLive()
-    {
-        nbLives--; // Décrémentez le nombre de vies du joueur
-        if (hud != null)
-        {
-            hud.updatelivesText(nbLives); // Mettez à jour l'affichage des vies dans le HUD
-        }
-        audioManager.PlaySFX(audioManager.damageSFX); //Joue le bruitage de dégâts
+	//Ajoute 1 au compteur de morts
+	public void AddDeath(){
+		nbDeath++;
+		if(hud != null){ //On édite le HUD
+			hud.updateDeathText(nbDeath);
+		}
+		audioManager.PlaySFX(audioManager.damageSFX); //Joue le bruitage de dégâts
 	}
 
 	//On récupère le nombre de morts
-	public int GetNbLives(){
-		return nbLives;
+	public int GetNbDeath(){
+		return nbDeath;
 	}
 	
 	//On récupère le nombre de morts

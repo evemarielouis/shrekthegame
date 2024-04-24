@@ -69,3 +69,5 @@ public class VerticalMove : MonoBehaviour
 			triggerActivated = true;
 		}
 }
+
+	
