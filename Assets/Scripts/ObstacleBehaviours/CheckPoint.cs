@@ -18,8 +18,6 @@ public class CheckPoint : MonoBehaviour
 			PlayerManager.SetFreeze(0.5f);
             StopTrigger = true;
             OnTriggerEvent?.Invoke();
-
-			
         }
     }
         }
