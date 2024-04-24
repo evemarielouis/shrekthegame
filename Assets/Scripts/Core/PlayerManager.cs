@@ -87,6 +87,11 @@ public class PlayerManager : MonoBehaviour
 	[SerializeField] private float _moveSpeed = 5f; //On définit ici la vitesse du character. Vous pouvez la modifier. 5f = le nombre 5 en float (décimal).
 	[SerializeField] private Rigidbody2D _rb; //On place ici le rigidbody du character
 	private Vector2 _movement;
+	private Animator animator;
+
+	void Start(){
+		animator = GetComponent<Animator>(); //On charge l'animator de l'objet dans notre script
+	}
 	
 
     // Fonction qui se lance à chaque frame.
@@ -98,6 +103,14 @@ public class PlayerManager : MonoBehaviour
 		//On récupère si les touches de directions horizontales et verticales sont pressées, cela donne un nombre entre 0 (pas pressé) et 1 (pressé).
         _movement.x = Input.GetAxisRaw("Horizontal");
 		_movement.y = Input.GetAxisRaw("Vertical");
+
+		if(_movement != Vector2.zero){ //Si le joueur bouge, on partage les variables à l'animator pour qu'il bouge le sprite en conséquence
+			animator.SetFloat("moveX", _movement.x);
+			animator.SetFloat("moveY", _movement.y);
+			animator.SetBool("moving", true);
+		} else {
+			animator.SetBool("moving", false);
+		}
 
 		//Si la valeur récupérée est supérieure à 0, ça veut dire que la touche est pressée.
 		bool isMovingHorizontal = Mathf.Abs(_movement.x) > 0;
