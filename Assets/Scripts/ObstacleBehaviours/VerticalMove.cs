@@ -7,8 +7,9 @@ public class VerticalMove : MonoBehaviour
 	[SerializeField] private float moveSpeed = 5f; //Vitesse de l'objet, modifiable
 	[SerializeField] private int ySens = 1; //Le sens de l'objet (1 si en bas, -1 si en haut)
 	[SerializeField] private Rigidbody2D rb; //Le rigidbody pour bouger l'obstacle
-											 // DELAY AVANT DE COMMENCER A BOUGER (ENNEMIS)
-	[SerializeField] private float delay = 0f;
+
+	// DELAY AVANT DE COMMENCER A BOUGER (ENNEMIS)
+	[SerializeField] private float delay = 0f; 
 	[SerializeField] private float pause = 0f;
 
 	private float pauseTimer = 0f;
@@ -27,6 +28,7 @@ public class VerticalMove : MonoBehaviour
 	}
 
 	//A chaque frame, on bouge l'objet via son rigidbody dans le mouvement défini * la vitesse de l'objet moveSpeed * Time.fixedDeltaTime le laps de temps écoulé en 1 frame
+
 	void FixedUpdate()
 	{
 
@@ -54,9 +56,10 @@ public class VerticalMove : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		//Si l'obstacle rentre en collision avec un mur, on inverse son mouvement vertical pour qu'il aille dans le sens contraire
-		if (col.gameObject.tag == "Wall")
-		{
-			movement.y = movement.y * -1;
+
+		if (col.gameObject.tag == "Wall") {
+			movement.y = movement.y*-1; 
+
 			pauseTimer = pause;
 		}
 	}
