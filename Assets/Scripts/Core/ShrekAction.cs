@@ -7,8 +7,9 @@ public class ShrekAction : MonoBehaviour
 
     [SerializeField] private Transform DonkeySpawnPoint;
     [SerializeField] private GameObject DonkeyPrefab;
-    [SerializeField] private float Speed = 20f;
+    [SerializeField] private float Speed = 2f;
     private bool triggerActivated = false;
+    private bool copyDonkey = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,16 +23,20 @@ public class ShrekAction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X) && triggerActivated) {
                 Debug.Log("Key is pressed");
-                var donkey = Instantiate(DonkeyPrefab, DonkeySpawnPoint.position, DonkeySpawnPoint.rotation);
-                Rigidbody2D donkeyRB = donkey.GetComponent<Rigidbody2D>();
-                donkeyRB.velocity = new Vector2(-Speed, 0); // Move from left to right
+                if (!copyDonkey){
+                    var donkey = Instantiate(DonkeyPrefab, DonkeySpawnPoint.position, DonkeySpawnPoint.rotation);
+                    copyDonkey = true;
+                    Rigidbody2D donkeyRB = donkey.GetComponent<Rigidbody2D>();
+                    donkeyRB.velocity = DonkeySpawnPoint.position * Speed;
+                    //donkeyRB.velocity = new Vector2(-Speed, 0); // Move from left to right
+                }
+                
             }
         } 
         
     void HandleTriggerEvent()
     {
          // Perform an action when the player enters the trigger collider
-        Debug.Log("YO WE ENTERED");
         triggerActivated = true; 
         Debug.Log("triggerActivated is set to true");
         // Optionally, you can add additional actions here when the trigger is activated
