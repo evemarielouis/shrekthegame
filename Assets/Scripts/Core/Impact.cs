@@ -12,7 +12,7 @@ public class Impact : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
 		//Si l'obstacle entre en collision avec le joueur (objet avec le tag "Player")
         if (col.gameObject.tag == "Player") {
-			
+		
 			//S'il faut réinitialiser des obstacles lorsqu'on perd, uniquement s'il y a un tableauReinit
 			if(tableauReinit != null){
 				tableauReinit.Reinit();
@@ -22,7 +22,7 @@ public class Impact : MonoBehaviour
             col.gameObject.transform.position = TableauManager.GetCheckpointPosition();
 			
 			//On augmente de 1 le compteur de morts
-			col.gameObject.GetComponent<PlayerManager>().AddDeath(); //On récupère le PlayerManager du joueur pour ajouter la mort
+			col.gameObject.GetComponent<PlayerManager>().RemoveLive(); //On récupère le PlayerManager du joueur pour ajouter la mort
 			
 			//On immobilise le joueur pendant 0.5 s
 			PlayerManager.SetFreeze(0.5f);
