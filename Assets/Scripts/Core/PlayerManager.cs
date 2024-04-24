@@ -100,7 +100,6 @@ public class PlayerManager : MonoBehaviour
     // Fonction qui se lance à chaque frame.
     void Update() {
 		
-		
     }
 
 	void FixedUpdate() {
