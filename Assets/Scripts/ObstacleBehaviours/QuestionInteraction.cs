@@ -41,34 +41,24 @@ public class QuestionInteraction : MonoBehaviour
         {
             // Vérifier la réponse sélectionnée
             if (selectedButton == answerButtonA)
+
             {
                 // Réponse correcte (bouton A)
                 Debug.Log("Bonne réponse ! Vous pouvez continuer le jeu.");
-                ChangeButtonColor(answerButtonA, Color.green); // changement de la couleur de la case de bonne réponse
                 // Traitez la réponse correcte
             }
             else
             {
                 // Réponse incorrecte (boutons B ou C)
                 Debug.Log("Mauvaise réponse ! Vous revenez au début du niveau.");
-                ChangeButtonColor(answerButtonA, Color.red); // changement de la couleur de la case de la mauvaise réponse
+        
                 // Traitez la réponse incorrecte
+                selectedButton.gameObject.transform.position = TableauManager.GetCheckpointPosition();
             }
             // Désactiver les boutons du QCM après avoir sélectionné une réponse
             SetQcmActive(false);
         }
     }
-
-    private void ChangeButtonColor(Button button, Color color)
-{
-    // Accéder au composant Image du bouton
-    Image buttonImage = button.GetComponent<Image>();
-    if (buttonImage != null)
-    {
-        // Changer la couleur de l'image du bouton
-        buttonImage.color = color;
-    }
-}
 
     private void SetQcmActive(bool active)
     {
