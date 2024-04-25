@@ -254,7 +254,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 754c0330270ae3d43bd844b11ab30de5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -363,7 +363,7 @@ MonoBehaviour:
   - {fileID: 122136301}
   - {fileID: 190003708}
   - {fileID: 1465575243}
-  showDuration: 2
+  showDuration: 3
 --- !u!61 &190003712
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -596,7 +596,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 852720933783e7a449d5cccd48bb1e33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1159,7 +1159,7 @@ MonoBehaviour:
   - {fileID: 371685455}
   - {fileID: 1573409319}
   - {fileID: 1905478631}
-  showDuration: 5
+  showDuration: 3
 --- !u!4 &1041151302
 Transform:
   m_ObjectHideFlags: 0
@@ -1590,6 +1590,11 @@ Transform:
   - {fileID: 786818558}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1456975706 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5451032993232609451, guid: 747b8511f06c9d742b9d12f4e7724716, type: 3}
+  m_PrefabInstance: {fileID: 3107507812546411625}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1465575243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1906,7 +1911,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a0baae8e9b524f7409ad4a9f2c39f3b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2229,7 +2234,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a9c0d9fcfce43b845b25b13fd9e6f7b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2572,6 +2577,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2379461190035851161, guid: 747b8511f06c9d742b9d12f4e7724716, type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 1456975706}
     - target: {fileID: 4821709241773030402, guid: 747b8511f06c9d742b9d12f4e7724716, type: 3}
       propertyPath: m_Pivot.x
       value: 0

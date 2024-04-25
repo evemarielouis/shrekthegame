@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
         {
             Debug.Log("oh my god they're KISSING");
             dialogues[0].SetActive(true);
-            Invoke("HideCurrentSprite", showDuration);
+            Invoke("HideAllSprites", showDuration);
 
         }
     }
