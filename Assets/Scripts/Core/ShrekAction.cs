@@ -11,8 +11,6 @@ public class ShrekAction : MonoBehaviour
     private bool triggerActivated = false;
     private bool copyDonkey = false;
 
-    [SerializeField] private GameObject Enemy;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +34,7 @@ public class ShrekAction : MonoBehaviour
 
       
     }  
+
     void HandleTriggerEvent()
         {
             // Perform an action when the player enters the trigger collider

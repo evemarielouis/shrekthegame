@@ -23,6 +23,6 @@ public class FinishLine : MonoBehaviour
 	{
 		yield return new WaitForSeconds( 5.0f );
 		Debug.Log("Fin");
-		SceneManager.LoadScene("TitleMenu");
+		SceneManager.LoadScene("TitleMenuFinal");
 	}
 }

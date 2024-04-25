@@ -33,6 +33,7 @@ public class PlayerManager : MonoBehaviour
 	
 	[SerializeField] private HUD hud; //on joint le hud du canvas
 	[SerializeField] private AudioManager audioManager; 
+	[SerializeField] private GameObject dialog1; 
 	
 	//Variables attributs  du joueur.
 	
@@ -83,6 +84,11 @@ public void RemoveLive()
 		transform.position = new Vector2(_x,_y);
 		if(hud != null){ //On édite le HUD
 			hud.updateLevelText(_numTableau);
+		}
+
+		if(_numTableau == 2){
+			Debug.Log("tab2");
+			hud.ShowNextDialog1();
 		}
 	}
 	

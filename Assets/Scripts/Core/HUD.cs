@@ -9,7 +9,26 @@ public class HUD : MonoBehaviour
 	[SerializeField] private GameObject levelText; //On insère l'objet texte qui affiche le numéro du niveau
 	[SerializeField] private GameObject timerText; //On insère l'objet texte qui affiche le compteur de temps
 
+	[SerializeField] private GameObject[] imagesDialog1;
+
+	private int numImageDialog1 = 0;
+	private bool showingDialog1 = false;
+
+	void Update()
+    {
+        if (showingDialog1)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ShowNextDialog1(); 
+            }
+        }
+    }
+
+
+
 	[SerializeField] private GameObject livesText; // Nouveau champ pour afficher le nombre de vies
+
 	
 		// Nouvelle méthode pour mettre à jour le texte des vies
 	public void updatelivesText(int nbLives)
@@ -27,4 +46,19 @@ public class HUD : MonoBehaviour
 	}
 
 
+	public void showDialog1(int numImage){
+		for(int i = 0; i < imagesDialog1.Length; i++){
+			if(numImage == i){
+				imagesDialog1[i].SetActive(true);
+			} else {
+				imagesDialog1[i].SetActive(false); //NATHAN
+			}
+		}
+	}
+
+	public void ShowNextDialog1(){
+		showDialog1(numImageDialog1);
+		numImageDialog1++;
+		showingDialog1 = numImageDialog1 <= imagesDialog1.Length;
+	}
 }
