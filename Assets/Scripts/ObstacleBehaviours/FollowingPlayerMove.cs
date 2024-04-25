@@ -5,31 +5,44 @@ using UnityEngine;
 
 public class FollowingPlayerMove : MonoBehaviour
 {
-	[SerializeField] private float moveSpeed = 5f; //Vitesse de l'objet, modifiable
-	[SerializeField] private Rigidbody2D rb; //Le rigidbody pour bouger l'obstacle
-	private Vector2 direction;
-	private GameObject player;
-	
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private Rigidbody2D rb;
+    private Vector2 direction;
 	private float delay = 0.5f;
 	private float timerDelay = 0;
-	private Vector2 initPosition; //position initiale
+    private bool isFollowing = false; // Indicateur de suivi
 
-	//Au démarrage, défini la variable de mouvement
-	void Start(){
-		player = PlayerManager.GetPlayer();
-		initPosition = new Vector2(transform.position.x, transform.position.y);
-	}
+		private Vector2 initPosition; //position initiale
 
-	//A chaque frame, on bouge l'objet via son rigidbody dans le mouvement défini * la vitesse de l'objet moveSpeed * Time.fixedDeltaTime le laps de temps écoulé en 1 frame
-	void FixedUpdate() {
-		//Si le timer de delay est supérieur à 0, on attend que le temps soit écoulé jusqu'à zéro
-		if(timerDelay > 0){
-			timerDelay = Mathf.Max(0, timerDelay - Time.fixedDeltaTime);
-		}
-		direction = (player.transform.position - transform.position).normalized;
-		rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
-	}
-	
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Activer le suivi lorsque Fiona entre en collision avec le joueur
+            isFollowing = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Désactiver le suivi lorsque Fiona quitte la collision avec le joueur
+            isFollowing = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (isFollowing)
+        {
+            // Déplacer Fiona seulement si elle doit suivre le joueur
+            direction = (PlayerManager.GetPlayer().transform.position - transform.position).normalized;
+            rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+        }
+    }
+
+
 	//Fonction qui remet l'objet à sa position initiale
 	public void reinitPosition(){
 		transform.position = initPosition;
