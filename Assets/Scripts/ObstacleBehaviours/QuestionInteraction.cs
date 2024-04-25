@@ -41,7 +41,6 @@ public class QuestionInteraction : MonoBehaviour
         {
             // Vérifier la réponse sélectionnée
             if (selectedButton == answerButtonA)
-
             {
                 // Réponse correcte (bouton A)
                 Debug.Log("Bonne réponse ! Vous pouvez continuer le jeu.");
@@ -51,9 +50,17 @@ public class QuestionInteraction : MonoBehaviour
             {
                 // Réponse incorrecte (boutons B ou C)
                 Debug.Log("Mauvaise réponse ! Vous revenez au début du niveau.");
-        
+
+                GameObject player = GameObject.FindWithTag("Player");
                 // Traitez la réponse incorrecte
-                selectedButton.gameObject.transform.position = TableauManager.GetCheckpointPosition();
+                //On change la position du joueur et on le téléporte aux coordonnées sauvegardées dans le TableauManager dans la variable checkpointPosition.
+                player.transform.position = TableauManager.GetCheckpointPosition();
+			
+			    //On réduit de 1 le compteur de vies
+			    player.GetComponent<PlayerManager>().RemoveLive(); //On récupère le PlayerManager du joueur pour ajouter la mort
+
+            //On immobilise le joueur pendant 0.5 s
+			PlayerManager.SetFreeze(0.5f);
             }
             // Désactiver les boutons du QCM après avoir sélectionné une réponse
             SetQcmActive(false);

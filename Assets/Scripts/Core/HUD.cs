@@ -9,7 +9,7 @@ public class HUD : MonoBehaviour
 	[SerializeField] private GameObject levelText; //On insère l'objet texte qui affiche le numéro du niveau
 	[SerializeField] private GameObject timerText; //On insère l'objet texte qui affiche le compteur de temps
 
-	  [SerializeField] private GameObject livesText; // Nouveau champ pour afficher le nombre de vies
+	[SerializeField] private GameObject livesText; // Nouveau champ pour afficher le nombre de vies
 	
 		// Nouvelle méthode pour mettre à jour le texte des vies
 	public void updatelivesText(int nbLives)
