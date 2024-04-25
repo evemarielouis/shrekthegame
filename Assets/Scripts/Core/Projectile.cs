@@ -4,19 +4,46 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    void Start(){
 
-	}
-      void OnCollisionEnter2D(Collision2D col)
+    [SerializeField] private GameObject[] dialogues;
+    public float showDuration = 5f; // Duration in seconds to show the sprite
+    private int currentIndex = 0;      // Index of the current sprite being shown
+
+    void Start()
+    {
+        HideAllSprites();
+        dialogues[1].SetActive(true);
+        dialogues[2].SetActive(true);
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
     {
         // Check if the projectile collides with a GameObject tagged as "Wall"
         if (col.gameObject.tag == "Donkey")
         {
             Debug.Log("oh my god they're KISSING");
-           // ANIMATION QUAND DRAGON EST MORT ICI NATHAN ICI 
-           
-        } 
+            // DIALOGUE QUI APPARAIT
+            dialogues[0].SetActive(true);
+            Invoke("HideAllSprites", showDuration); // Automatically hide the sprite after showDuration seconds
 
+        }
+    }
 
+    private void HideCurrentSprite()
+    {
+                // Hide the current sprite
+        if (currentIndex > 0 && currentIndex <= dialogues.Length)
+        {
+            dialogues[currentIndex - 1].SetActive(false);
+        }
+    }
+
+        private void HideAllSprites()
+    {
+        // Hide all sprites
+        foreach (var dialogue in dialogues)
+        {
+            dialogue.SetActive(false);
+        }
     }
 }
