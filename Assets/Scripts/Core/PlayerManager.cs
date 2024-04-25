@@ -76,7 +76,7 @@ public class PlayerManager : MonoBehaviour
 
 		if(_numTableau == 2){
 			Debug.Log("tab2");
-			dialog1.SetActive(true);
+			hud.ShowNextDialog1();
 		}
 	}
 	
