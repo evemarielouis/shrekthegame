@@ -102,7 +102,8 @@ public class Menu : MonoBehaviour
 	{
 		//Mettre entre guillemets le nom de la scène vers laquelle charger
 		//Pour utiliser SceneManager, il faut impérativement rajouter "using UnityEngine.SceneManagement;" en haut du script.
-		SceneManager.LoadScene("SceneToEdit_Eve 1");
+		SceneManager.LoadScene("sceneemptybackup.unity");
+		gameObject.GetComponent<PlayerManager>().Teleport(-7,0,2);
 	}
 
 	//Fonction qui affiche la première image des règles

@@ -63,7 +63,8 @@ public void RemoveLive()
     {
         nbLives = 0; // Assurez-vous que le nombre de vies ne soit pas négatif
         hud.updatelivesText(nbLives); // Mettez à jour l'affichage des vies dans le HUD
-    }
+		SceneManager.LoadScene("loose"); 
+	}
     else
     {
         if (hud != null)

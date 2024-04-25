@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class QuestionInteraction : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class QuestionInteraction : MonoBehaviour
             {
                 // Réponse correcte (bouton A)
                 Debug.Log("Bonne réponse ! Vous pouvez continuer le jeu.");
+                SceneManager.LoadScene("win");
                 // Traitez la réponse correcte
             }
             else

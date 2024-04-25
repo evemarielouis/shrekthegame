@@ -20,6 +20,7 @@ public class Fire : MonoBehaviour
 			
 			//On immobilise le joueur pendant 0.5 s
 			PlayerManager.SetFreeze(0.5f);
+            Destroy(gameObject);
             
         }
 

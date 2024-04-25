@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HUD : MonoBehaviour
 {
@@ -29,10 +30,8 @@ public class HUD : MonoBehaviour
 
 	[SerializeField] private GameObject livesText; // Nouveau champ pour afficher le nombre de vies
 
-	
-		// Nouvelle méthode pour mettre à jour le texte des vies
-	public void updatelivesText(int nbLives)
-    {
+				// Nouvelle méthode pour mettre à jour le texte des vies
+	public void updatelivesText(int nbLives){
         livesText.GetComponent<TMP_Text>().text = "Vies : " + nbLives;
     }
 	
@@ -51,7 +50,8 @@ public class HUD : MonoBehaviour
 			if(numImage == i){
 				imagesDialog1[i].SetActive(true);
 			} else {
-				imagesDialog1[i].SetActive(false); //NATHAN
+				imagesDialog1[i].SetActive(false);				
+				 //NATHAN
 			}
 		}
 	}
@@ -60,5 +60,8 @@ public class HUD : MonoBehaviour
 		showDialog1(numImageDialog1);
 		numImageDialog1++;
 		showingDialog1 = numImageDialog1 <= imagesDialog1.Length;
+		if (numImageDialog1 >= 9){
+			SceneManager.LoadScene("SceneToEdit_Eve 1");
+		}
 	}
 }

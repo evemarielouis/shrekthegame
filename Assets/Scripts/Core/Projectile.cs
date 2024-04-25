@@ -75,6 +75,6 @@ private void ShowNextSprite()
         yield return new WaitForSeconds(waitTime);
         
         // Charger la nouvelle scène
-        SceneManager.LoadScene("SceneToEdit_Dina");
+        SceneManager.LoadScene("dinaFinal");
     }
 }
