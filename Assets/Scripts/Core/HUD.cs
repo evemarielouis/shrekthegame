@@ -27,7 +27,7 @@ public class HUD : MonoBehaviour
 
 
 
-	  [SerializeField] private GameObject livesText; // Nouveau champ pour afficher le nombre de vies
+	[SerializeField] private GameObject livesText; // Nouveau champ pour afficher le nombre de vies
 
 	
 		// Nouvelle méthode pour mettre à jour le texte des vies
