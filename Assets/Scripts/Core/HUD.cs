@@ -20,7 +20,7 @@ public class HUD : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                ShowNextDialog1();
+                ShowNextDialog1(); 
             }
         }
     }
@@ -45,7 +45,7 @@ public class HUD : MonoBehaviour
 			if(numImage == i){
 				imagesDialog1[i].SetActive(true);
 			} else {
-				imagesDialog1[i].SetActive(false);
+				imagesDialog1[i].SetActive(false); //NATHAN
 			}
 		}
 	}
