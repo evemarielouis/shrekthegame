@@ -8,6 +8,7 @@ public class CheckPoint : MonoBehaviour
     public static event TriggerEventHandler OnTriggerEvent;
     private bool StopTrigger = false;
 
+
     public void OnTriggerEnter2D(Collider2D col) {
 		//Si l'obstacle entre en collision avec le joueur (objet avec le tag "Player")
         
