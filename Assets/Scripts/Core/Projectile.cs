@@ -22,10 +22,23 @@ public class Projectile : MonoBehaviour
         if (col.gameObject.tag == "Donkey")
         {
             Debug.Log("oh my god they're KISSING");
-            // DIALOGUE QUI APPARAIT
             dialogues[0].SetActive(true);
-            Invoke("HideAllSprites", showDuration); // Automatically hide the sprite after showDuration seconds
+            Invoke("HideCurrentSprite", showDuration);
 
+        }
+    }
+
+
+private void ShowNextSprite()
+    {
+        // Hide the current sprite
+        HideCurrentSprite();
+
+        // Show the next sprite in the list
+        if (currentIndex < dialogues.Length)
+        {
+            dialogues[currentIndex].SetActive(true);
+            currentIndex++;
         }
     }
 
